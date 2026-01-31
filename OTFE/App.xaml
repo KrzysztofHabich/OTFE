@@ -2,8 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:OTFE"
-             StartupUri="MainWindow.xaml">
+             xmlns:converters="clr-namespace:OTFE.Converters">
     <Application.Resources>
-         
+        <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
+        <converters:NotNullToVisibilityConverter x:Key="NotNullToVisibilityConverter"/>
+        <converters:IntToVisibilityConverter x:Key="IntToVisibilityConverter"/>
+        <converters:CollectionCountToVisibilityConverter x:Key="CollectionCountToVisibilityConverter"/>
+        <converters:StatusToBrushConverter x:Key="StatusToBrushConverter"/>
+        <converters:StatusToTextConverter x:Key="StatusToTextConverter"/>
     </Application.Resources>
 </Application>

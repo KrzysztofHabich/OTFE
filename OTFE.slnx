@@ -1,3 +1,11 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="AGENTS.md" />
+    <File Path="LICENSE.txt" />
+    <File Path="Plan.md" />
+    <File Path="README.md" />
+  </Folder>
   <Project Path="OTFE/OTFE.csproj" />
+  <Project Path="test/OTFE.Tests/OTFE.Tests.csproj" />
 </Solution>

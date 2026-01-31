@@ -1,24 +1,30 @@
-﻿using System.Text;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using OTFE.Models;
+using OTFE.ViewModels;
 
-namespace OTFE
+namespace OTFE;
+
+/// <summary>
+/// Interaction logic for MainWindow.xaml
+/// </summary>
+public partial class MainWindow : Window
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
+    public MainWindow(MainWindowViewModel viewModel)
     {
-        public MainWindow()
+        InitializeComponent();
+        DataContext = viewModel;
+    }
+
+    private void Exit_Click(object sender, RoutedEventArgs e)
+    {
+        Application.Current.Shutdown();
+    }
+
+    private void GanttChart_SpanSelected(object sender, RoutedPropertyChangedEventArgs<Span?> e)
+    {
+        if (DataContext is MainWindowViewModel vm)
         {
-            InitializeComponent();
+            vm.SelectedSpan = e.NewValue;
         }
     }
 }
