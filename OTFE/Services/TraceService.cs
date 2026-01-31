@@ -41,6 +41,9 @@ public class TraceService : ITraceService
                 _logger.LogInformation("Parsing file: {FilePath}", filePath);
                 var spans = await parser.ParseAsync(filePath, cancellationToken);
 
+                // Set the SourceFile on each span
+                var spansWithSource = spans.Select(s => s with { SourceFile = filePath }).ToList();
+
                 var fileType = Path.GetExtension(filePath).ToLowerInvariant() switch
                 {
                     ".log" => TraceFileType.Log,
@@ -52,7 +55,7 @@ public class TraceService : ITraceService
                 {
                     FilePath = filePath,
                     FileType = fileType,
-                    Spans = spans
+                    Spans = spansWithSource
                 };
 
                 traceFiles.Add(traceFile);

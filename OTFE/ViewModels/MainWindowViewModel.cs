@@ -22,6 +22,9 @@ public partial class MainWindowViewModel : ObservableObject
     private ObservableCollection<TraceFile> _loadedFiles = [];
 
     [ObservableProperty]
+    private ObservableCollection<TraceFile> _selectedFiles = [];
+
+    [ObservableProperty]
     private ObservableCollection<Trace> _traces = [];
 
     [ObservableProperty]
@@ -53,6 +56,9 @@ public partial class MainWindowViewModel : ObservableObject
 
     [ObservableProperty]
     private ObservableCollection<AnomalyResult> _currentSpanAnomalies = [];
+
+    [ObservableProperty]
+    private bool _hasFileSelection;
 
     public MainWindowViewModel(
         ILogger<MainWindowViewModel> logger, 
@@ -150,6 +156,8 @@ public partial class MainWindowViewModel : ObservableObject
     private void ClearFiles()
     {
         LoadedFiles.Clear();
+        SelectedFiles.Clear();
+        HasFileSelection = false;
         Traces.Clear();
         _allTraces = [];
         SelectedTrace = null;
@@ -158,6 +166,30 @@ public partial class MainWindowViewModel : ObservableObject
         _traceService.Clear();
         StatusMessage = "Cleared all files";
         _logger.LogInformation("Cleared all loaded files");
+    }
+
+    [RelayCommand]
+    private void ClearFileSelection()
+    {
+        SelectedFiles.Clear();
+        HasFileSelection = false;
+        ApplyFilterAndSort();
+        _logger.LogDebug("Cleared file selection, showing all traces");
+    }
+
+    public void OnFileSelectionChanged(IList<object> selectedItems)
+    {
+        SelectedFiles.Clear();
+        foreach (var item in selectedItems)
+        {
+            if (item is TraceFile file)
+            {
+                SelectedFiles.Add(file);
+            }
+        }
+        HasFileSelection = SelectedFiles.Count > 0;
+        ApplyFilterAndSort();
+        _logger.LogDebug("File selection changed: {Count} files selected", SelectedFiles.Count);
     }
 
     [RelayCommand]
@@ -256,8 +288,18 @@ public partial class MainWindowViewModel : ObservableObject
 
     private void ApplyFilterAndSort()
     {
+        // Start with all traces or filter by selected files
+        IEnumerable<Trace> tracesToFilter = _allTraces;
+        
+        if (HasFileSelection && SelectedFiles.Count > 0)
+        {
+            var selectedFilePaths = SelectedFiles.Select(f => f.FilePath).ToHashSet();
+            tracesToFilter = _allTraces.Where(t => 
+                t.AllSpans.Any(s => selectedFilePaths.Contains(s.SourceFile)));
+        }
+
         var filter = _searchService.ParseQuery(SearchQuery);
-        var filtered = _searchService.FilterTraces(_allTraces, filter);
+        var filtered = _searchService.FilterTraces(tracesToFilter, filter);
 
         // Apply sorting
         var sorted = ApplySort(filtered);
@@ -268,14 +310,22 @@ public partial class MainWindowViewModel : ObservableObject
             Traces.Add(trace);
         }
 
+        // Build status message
+        var statusParts = new List<string>();
+        statusParts.Add($"Showing {Traces.Count}");
+        
+        if (HasFileSelection)
+        {
+            statusParts.Add($"from {SelectedFiles.Count} file(s)");
+        }
+        
         if (!filter.IsEmpty)
         {
-            StatusMessage = $"Showing {Traces.Count} of {_allTraces.Count} traces (filtered)";
+            statusParts.Add("(filtered)");
         }
-        else
-        {
-            StatusMessage = $"Showing {Traces.Count} traces";
-        }
+
+        statusParts.Add($"of {_allTraces.Count} total traces");
+        StatusMessage = string.Join(" ", statusParts);
     }
 
     private IEnumerable<Trace> ApplySort(IEnumerable<Trace> traces)

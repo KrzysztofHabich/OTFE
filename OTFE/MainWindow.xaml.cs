@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 using OTFE.Models;
 using OTFE.ViewModels;
 
@@ -25,6 +26,14 @@ public partial class MainWindow : Window
         if (DataContext is MainWindowViewModel vm)
         {
             vm.SelectedSpan = e.NewValue;
+        }
+    }
+
+    private void LoadedFilesListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (DataContext is MainWindowViewModel vm && sender is ListBox listBox)
+        {
+            vm.OnFileSelectionChanged(listBox.SelectedItems.Cast<object>().ToList());
         }
     }
 }

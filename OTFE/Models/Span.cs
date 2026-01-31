@@ -14,6 +14,11 @@ public record Span
     public required DateTime Timestamp { get; init; }
     public IReadOnlyDictionary<string, string> Tags { get; init; } = new Dictionary<string, string>();
     public IReadOnlyList<SpanEvent> Events { get; init; } = [];
+    
+    /// <summary>
+    /// The source file path this span was loaded from.
+    /// </summary>
+    public string SourceFile { get; init; } = "";
 
     /// <summary>
     /// Returns true if this span has no parent (root span).
