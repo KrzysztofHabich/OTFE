@@ -11,5 +11,6 @@
         <converters:CollectionCountToVisibilityConverter x:Key="CollectionCountToVisibilityConverter"/>
         <converters:StatusToBrushConverter x:Key="StatusToBrushConverter"/>
         <converters:StatusToTextConverter x:Key="StatusToTextConverter"/>
+        <converters:BoolToWatchingBrushConverter x:Key="BoolToWatchingBrushConverter"/>
     </Application.Resources>
 </Application>

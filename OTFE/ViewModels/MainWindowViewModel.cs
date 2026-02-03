@@ -8,15 +8,17 @@ using System.IO;
 
 namespace OTFE.ViewModels;
 
-public partial class MainWindowViewModel : ObservableObject
+public partial class MainWindowViewModel : ObservableObject, IDisposable
 {
     private readonly ILogger<MainWindowViewModel> _logger;
     private readonly ITraceService _traceService;
     private readonly ISearchService _searchService;
     private readonly IAnomalyDetectionService _anomalyService;
+    private readonly IFileWatcherService _fileWatcherService;
 
     private IReadOnlyList<Trace> _allTraces = [];
     private IReadOnlyList<AnomalyResult> _anomalies = [];
+    private bool _disposed;
 
     [ObservableProperty]
     private ObservableCollection<TraceFile> _loadedFiles = [];
@@ -60,16 +62,30 @@ public partial class MainWindowViewModel : ObservableObject
     [ObservableProperty]
     private bool _hasFileSelection;
 
+    [ObservableProperty]
+    private string? _watchedFolderPath;
+
+    [ObservableProperty]
+    private bool _isWatchingEnabled = true;
+
     public MainWindowViewModel(
         ILogger<MainWindowViewModel> logger, 
         ITraceService traceService,
         ISearchService searchService,
-        IAnomalyDetectionService anomalyService)
+        IAnomalyDetectionService anomalyService,
+        IFileWatcherService fileWatcherService)
     {
         _logger = logger;
         _traceService = traceService;
         _searchService = searchService;
         _anomalyService = anomalyService;
+        _fileWatcherService = fileWatcherService;
+
+        // Subscribe to file watcher events
+        _fileWatcherService.FileCreated += OnFileCreated;
+        _fileWatcherService.FileChanged += OnFileChanged;
+        _fileWatcherService.FileDeleted += OnFileDeleted;
+
         _logger.LogInformation("MainWindowViewModel initialized");
     }
 
@@ -107,7 +123,37 @@ public partial class MainWindowViewModel : ObservableObject
                 .ToArray();
 
             await LoadFilesAsync(files);
+
+            // Start watching the folder if enabled
+            WatchedFolderPath = dialog.FolderName;
+            if (IsWatchingEnabled)
+            {
+                _fileWatcherService.StartWatching(dialog.FolderName);
+                _logger.LogInformation("Started watching folder: {Path}", dialog.FolderName);
+            }
         }
+    }
+
+    [RelayCommand]
+    private void ToggleWatching()
+    {
+        IsWatchingEnabled = !IsWatchingEnabled;
+        _fileWatcherService.IsEnabled = IsWatchingEnabled;
+
+        if (IsWatchingEnabled && !string.IsNullOrEmpty(WatchedFolderPath))
+        {
+            _fileWatcherService.StartWatching(WatchedFolderPath);
+            _logger.LogInformation("Folder monitoring enabled for: {Path}", WatchedFolderPath);
+        }
+        else
+        {
+            _logger.LogInformation("Folder monitoring disabled");
+        }
+    }
+
+    partial void OnIsWatchingEnabledChanged(bool value)
+    {
+        _fileWatcherService.IsEnabled = value;
     }
 
     private async Task LoadFilesAsync(string[] filePaths)
@@ -155,6 +201,10 @@ public partial class MainWindowViewModel : ObservableObject
     [RelayCommand]
     private void ClearFiles()
     {
+        // Stop watching when files are cleared
+        _fileWatcherService.StopWatching();
+        WatchedFolderPath = null;
+
         LoadedFiles.Clear();
         SelectedFiles.Clear();
         HasFileSelection = false;
@@ -397,6 +447,124 @@ public partial class MainWindowViewModel : ObservableObject
         var currentIndex = SelectedTrace != null ? Traces.IndexOf(SelectedTrace) : 0;
         var prevIndex = currentIndex <= 0 ? Traces.Count - 1 : currentIndex - 1;
         SelectedTrace = Traces[prevIndex];
+    }
+
+    #region File Watcher Event Handlers
+
+    private async void OnFileCreated(object? sender, FileChangedEventArgs e)
+    {
+        _logger.LogInformation("File created: {Path}", e.FilePath);
+
+        // Check if file is already loaded (edge case)
+        if (LoadedFiles.Any(f => f.FilePath.Equals(e.FilePath, StringComparison.OrdinalIgnoreCase)))
+        {
+            _logger.LogDebug("File already loaded, treating as change: {Path}", e.FilePath);
+            OnFileChanged(sender, e);
+            return;
+        }
+
+        await App.Current.Dispatcher.InvokeAsync(async () =>
+        {
+            try
+            {
+                var newFiles = await _traceService.LoadFilesAsync([e.FilePath]);
+                if (newFiles.Count > 0)
+                {
+                    LoadedFiles.Add(newFiles[0]);
+                    RestitchAndRefresh();
+                    _logger.LogInformation("Added new file: {Path} with {SpanCount} spans", 
+                        e.FilePath, newFiles[0].SpanCount);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error loading new file: {Path}", e.FilePath);
+            }
+        });
+    }
+
+    private async void OnFileChanged(object? sender, FileChangedEventArgs e)
+    {
+        _logger.LogInformation("File changed: {Path}", e.FilePath);
+
+        await App.Current.Dispatcher.InvokeAsync(async () =>
+        {
+            try
+            {
+                // Find and remove existing file
+                var existingFile = LoadedFiles.FirstOrDefault(f => 
+                    f.FilePath.Equals(e.FilePath, StringComparison.OrdinalIgnoreCase));
+
+                if (existingFile != null)
+                {
+                    LoadedFiles.Remove(existingFile);
+                }
+
+                // Reload the file
+                var reloadedFiles = await _traceService.LoadFilesAsync([e.FilePath]);
+                if (reloadedFiles.Count > 0)
+                {
+                    LoadedFiles.Add(reloadedFiles[0]);
+                    RestitchAndRefresh();
+                    _logger.LogInformation("Reloaded file: {Path} with {SpanCount} spans", 
+                        e.FilePath, reloadedFiles[0].SpanCount);
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error reloading file: {Path}", e.FilePath);
+            }
+        });
+    }
+
+    private void OnFileDeleted(object? sender, FileChangedEventArgs e)
+    {
+        _logger.LogInformation("File deleted: {Path}", e.FilePath);
+
+        App.Current.Dispatcher.Invoke(() =>
+        {
+            var existingFile = LoadedFiles.FirstOrDefault(f => 
+                f.FilePath.Equals(e.FilePath, StringComparison.OrdinalIgnoreCase));
+
+            if (existingFile != null)
+            {
+                LoadedFiles.Remove(existingFile);
+                SelectedFiles.Remove(existingFile);
+                RestitchAndRefresh();
+                _logger.LogInformation("Removed deleted file: {Path}", e.FilePath);
+            }
+        });
+    }
+
+    private void RestitchAndRefresh()
+    {
+        _allTraces = _traceService.StitchTraces(LoadedFiles);
+        ApplyFilterAndSort();
+
+        // Re-run anomaly detection
+        _ = DetectAnomaliesAsync();
+
+        var totalSpans = LoadedFiles.Sum(f => f.SpanCount);
+        StatusMessage = $"Loaded {LoadedFiles.Count} file(s), {totalSpans} spans, {_allTraces.Count} traces";
+        
+        if (IsWatchingEnabled && !string.IsNullOrEmpty(WatchedFolderPath))
+        {
+            StatusMessage += " • Watching";
+        }
+    }
+
+    #endregion
+
+    public void Dispose()
+    {
+        if (_disposed) return;
+        _disposed = true;
+
+        _fileWatcherService.FileCreated -= OnFileCreated;
+        _fileWatcherService.FileChanged -= OnFileChanged;
+        _fileWatcherService.FileDeleted -= OnFileDeleted;
+
+        GC.SuppressFinalize(this);
     }
 }
 

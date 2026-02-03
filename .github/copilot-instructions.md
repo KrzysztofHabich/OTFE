@@ -2,64 +2,60 @@
 
 ## Project Overview
 
-OTFE (OpenTelemetry File Explorer) is a WPF desktop application that opens and visualizes OpenTelemetry trace files. It stitches multiple trace files together into a unified view with a top-level event list, Gantt chart visualization, and detailed event inspection.
+OTFE (OpenTelemetry File Explorer) is a WPF desktop application (.NET 10) that opens and visualizes OpenTelemetry trace files. It stitches multiple trace files together into a unified view with Gantt chart visualization and ML-based anomaly detection.
 
 ## Build & Test Commands
 
 ```bash
-# Build the solution
-dotnet build OTFE.slnx
-
-# Run the application
-dotnet run --project OTFE/OTFE.csproj
-
-# Run all tests
-dotnet test
-
-# Run a specific test
-dotnet test --filter "FullyQualifiedName~TestMethodName"
-
-# Run tests in a specific class
-dotnet test --filter "FullyQualifiedName~ClassName"
+dotnet build OTFE.slnx                              # Build solution
+dotnet run --project OTFE/OTFE.csproj               # Run application
+dotnet test                                          # Run all tests
+dotnet test --filter "FullyQualifiedName~TestName"  # Run single test
+dotnet test --filter "FullyQualifiedName~ClassName" # Run test class
 ```
 
 ## Architecture
 
-### Supported File Formats
-- **`.log` files**: Custom C# Logger format with structured trace blocks (see `/Samples/*.log`)
-- **`.jsonl` files**: JSON Lines format for OpenTelemetry data
+### Project Structure
+- **OTFE/**: Main WPF application
+  - `Models/`: Domain records (`Span`, `Trace`, `SpanEvent`, `TraceFile`)
+  - `ViewModels/`: MVVM view models using CommunityToolkit.Mvvm
+  - `Services/`: Business logic (`ITraceService`, `ISearchService`, `IAnomalyDetectionService`)
+  - `Parsers/`: File parsers implementing `ITraceParser` (LogFileParser, JsonlFileParser)
+  - `Controls/`: Custom WPF controls (GanttChartControl)
+  - `Converters/`: WPF value converters
+- **test/OTFE.Tests/**: xUnit tests with sample .log files in `Samples/`
 
-### Trace File Structure (Log Format)
-Each trace block contains:
-- `TraceId`, `SpanId`, `ParentId` for correlation
-- `Name`, `Duration`, `Status` for overview
-- `Tags` with key-value pairs (e.g., `db.system.name`, `http.request.method`)
+### Key Interfaces
+- `ITraceParser`: File parsing (`ParseAsync` returns `IReadOnlyList<Span>`)
+- `ITraceService`: Load files, stitch spans into traces by TraceId
+- `ISearchService`: Query parsing and filtering (supports `Status:Error`, `Duration>500ms`, `HasAnomalies`)
+- `IAnomalyDetectionService`: ML.NET-based duration anomaly detection
+- `IFileWatcherService`: Folder monitoring with debounced file change events
+
+### Data Flow
+1. Files loaded via `ITraceService.LoadFilesAsync()` → parsers selected by extension
+2. Spans stitched into `Trace` objects via `StitchTraces()` (grouped by TraceId, linked by ParentId)
+3. Root spans identified by `ParentId == "0000000000000000"`
+4. Folder monitoring: `IFileWatcherService` watches for new/changed/deleted files (500ms debounce)
+
+### File Formats
+- **`.log`**: Custom structured format with `TraceId`, `SpanId`, `ParentId`, `Tags:`, `Events:` sections
+- **`.jsonl`**: JSON Lines OpenTelemetry format
 
 ## Conventions
 
 ### C# Style
-- PascalCase for all members
-- 4 spaces for indentation
-- Braces on new lines
-- Nullable reference types enabled
+- PascalCase for all members; 4 spaces; braces on new lines
+- Nullable reference types enabled throughout
 
 ### Patterns
-- **MVVM**: Use CommunityToolkit.Mvvm for view models
-- **DI**: Constructor injection only; register services in `Program.cs`
-- **DTOs**: Use `record` types for data transfer objects
-- **Async**: Use `async/await` throughout; never use `.Result` or `.Wait()`
-- **Logging**: Use `ILogger<T>` for structured logging; no `Console.WriteLine`
+- **MVVM**: CommunityToolkit.Mvvm for view models
+- **DI**: Constructor injection; register in `App.xaml.cs` `ConfigureServices()`
+- **DTOs**: Use `record` types (see `Span`, `SpanEvent`, `TraceFilter`)
+- **Async**: Always `async/await`; never `.Result` or `.Wait()`
+- **Logging**: `ILogger<T>` only; no `Console.WriteLine`
 
 ### Testing
-- xUnit with Moq for mocking
-- Follow AAA pattern (Arrange, Act, Assert)
-- Write tests for each completed task
-- Mock all external dependencies
-
-## Key Requirements Reference
-
-The full specification is in `/Spec/OPFE.md`. Key features include:
-- Multi-file trace stitching into unified views
-- Search by tag criteria (e.g., `Status: Error`, `Duration > 500ms`)
-- Sort by trace/event duration
-- Anomaly detection using local ML
+- xUnit + Moq; AAA pattern
+- Sample trace files in `test/OTFE.Tests/Samples/`

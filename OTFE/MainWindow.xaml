@@ -36,6 +36,13 @@
                 <Separator/>
                 <MenuItem Header="E_xit" Click="Exit_Click"/>
             </MenuItem>
+            <MenuItem Header="_View">
+                <MenuItem Header="Enable Folder _Monitoring" 
+                          IsCheckable="True" 
+                          IsChecked="{Binding IsWatchingEnabled}"
+                          Command="{Binding ToggleWatchingCommand}"
+                          ToolTip="Automatically detect new and changed trace files in the watched folder"/>
+            </MenuItem>
         </Menu>
         
         <!-- Main Content -->
@@ -344,6 +351,16 @@
         <StatusBar Grid.Row="2">
             <StatusBarItem>
                 <TextBlock Text="{Binding StatusMessage}"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <StackPanel Orientation="Horizontal" 
+                            Visibility="{Binding WatchedFolderPath, Converter={StaticResource NotNullToVisibilityConverter}}"
+                            ToolTip="{Binding WatchedFolderPath}">
+                    <TextBlock Text="👁" Margin="0,0,4,0"
+                               Foreground="{Binding IsWatchingEnabled, Converter={StaticResource BoolToWatchingBrushConverter}}"/>
+                    <TextBlock Text="Watching" 
+                               Foreground="{Binding IsWatchingEnabled, Converter={StaticResource BoolToWatchingBrushConverter}}"/>
+                </StackPanel>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar Width="100" Height="16" IsIndeterminate="True" 

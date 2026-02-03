@@ -67,7 +67,9 @@ public partial class LogFileParser : ITraceParser
         string filePath,
         [System.Runtime.CompilerServices.EnumeratorCancellation] CancellationToken cancellationToken)
     {
-        using var reader = new StreamReader(filePath);
+        // Use FileShare.ReadWrite to allow other processes to write while we read
+        using var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
+        using var reader = new StreamReader(stream);
         string? line;
         while ((line = await reader.ReadLineAsync(cancellationToken)) is not null)
         {

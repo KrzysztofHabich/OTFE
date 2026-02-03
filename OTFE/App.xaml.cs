@@ -33,6 +33,7 @@ public partial class App : Application
         services.AddSingleton<ITraceService, TraceService>();
         services.AddSingleton<ISearchService, SearchService>();
         services.AddSingleton<IAnomalyDetectionService, AnomalyDetectionService>();
+        services.AddSingleton<IFileWatcherService, FileWatcherService>();
 
         // ViewModels
         services.AddTransient<MainWindowViewModel>();

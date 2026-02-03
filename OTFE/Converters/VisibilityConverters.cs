@@ -1,6 +1,7 @@
 using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace OTFE.Converters;
 
@@ -96,6 +97,26 @@ public class CollectionCountToVisibilityConverter : IValueConverter
             return collection.Count > 0 ? Visibility.Visible : Visibility.Collapsed;
         }
         return Visibility.Collapsed;
+    }
+
+    public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        throw new NotSupportedException();
+    }
+}
+
+/// <summary>
+/// Converts bool to a brush for watching status. True = Green, False = Gray.
+/// </summary>
+public class BoolToWatchingBrushConverter : IValueConverter
+{
+    public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+    {
+        if (value is bool isWatching && isWatching)
+        {
+            return Brushes.Green;
+        }
+        return Brushes.Gray;
     }
 
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
