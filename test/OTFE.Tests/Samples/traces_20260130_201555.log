@@ -1,0 +1,1975 @@
+[2026-01-30 20:16:00.949] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: b568718bd3b5076b
+ParentId: cd2e45f698a9514f
+Name: GET
+Duration: 177.2474ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.786] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 95842f7972db5811
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 87.7867ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.786] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.890] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: b15498dd0f494441
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 4.8522ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.890] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.898] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 6d11f40af706b307
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 1.2624ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.898] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.905] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: aeb596af6171b0ff
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 1.1409ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.905] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.910] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 636e3c9ceea01a57
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 0.9047ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.910] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.915] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 9eb172dc471f38bf
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 1.151ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.915] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.920] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 4153b044bdce5164
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 0.8195ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.920] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.924] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 67f07ac18f513858
+ParentId: 95119335f2796014
+Name: SELECT [Symbols]
+Duration: 0.8055ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:16:04.924] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:04.928] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: 95119335f2796014
+ParentId: cd2e45f698a9514f
+Name: market_data.fetch
+Duration: 3677.2866ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:05.607] TRACE
+TraceId: d0effcb9a95f788d0778bf07d541d9b4
+SpanId: ebc227dff972f04f
+ParentId: a68ad639fc42e5fc
+Name: GET
+Duration: 29.3493ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:06.265] TRACE
+TraceId: d0effcb9a95f788d0778bf07d541d9b4
+SpanId: bf6c6f185b5cd0b7
+ParentId: a68ad639fc42e5fc
+Name: strategy.evaluate
+Duration: 6.0106ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:10.605] TRACE
+TraceId: fb270dcff7a8c249ff36d8b3263b905c
+SpanId: bc56c002a41680a5
+ParentId: 2dfb271cc6107e7b
+Name: GET
+Duration: 30.468ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:40.628] TRACE
+TraceId: fb270dcff7a8c249ff36d8b3263b905c
+SpanId: 2dfb271cc6107e7b
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30066.8071ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:16:40.663] TRACE
+TraceId: e23892c24f8578753f1b22c9e3993a21
+SpanId: 890636fefa0cfb93
+ParentId: 70a3a959038af694
+Name: GET
+Duration: 30.295ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:04.933] TRACE
+TraceId: 7b93d1d92e416e89ce4ab528ef924a71
+SpanId: cd2e45f698a9514f
+ParentId: 0000000000000000
+Name: market_monitoring.cycle
+Duration: 64351.4032ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:04.962] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: c4b3272f7a2bf6f7
+ParentId: 926b3cc0ca7bb01f
+Name: GET
+Duration: 28.5722ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.008] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: ddcb8df01327d396
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 1.2073ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.008] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.013] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: cfc0c600118d33f9
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.6807ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.013] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.017] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: d44aa46f38112bba
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.6805ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.017] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.021] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: 169ce43516c84a7a
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.8073ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.020] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.025] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: b021020f9afe40a8
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.9308ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.025] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.028] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: bf7a1ed234a3f503
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.6263ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.028] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.032] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: 251ba8c5f70f8c44
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.6476ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.032] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.036] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: 3495694e27d0de55
+ParentId: 9f02259dafd26606
+Name: SELECT [Symbols]
+Duration: 0.6513ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:17:05.036] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:05.039] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: 9f02259dafd26606
+ParentId: 926b3cc0ca7bb01f
+Name: market_data.fetch
+Duration: 75.4578ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:06.262] TRACE
+TraceId: d0effcb9a95f788d0778bf07d541d9b4
+SpanId: a68ad639fc42e5fc
+ParentId: 0000000000000000
+Name: strategy_execution.cycle
+Duration: 60684.5401ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:06.290] TRACE
+TraceId: 47edf0243937db44dbe829e3098006de
+SpanId: 61b6b6804458f05f
+ParentId: a7bfadf99cf644ae
+Name: GET
+Duration: 27.8253ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:06.292] TRACE
+TraceId: 47edf0243937db44dbe829e3098006de
+SpanId: 647b2c4978418c69
+ParentId: a7bfadf99cf644ae
+Name: strategy.evaluate
+Duration: 0.8061ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:10.669] TRACE
+TraceId: e23892c24f8578753f1b22c9e3993a21
+SpanId: 70a3a959038af694
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30040.2697ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:10.704] TRACE
+TraceId: d5aca0fe520d5c9c09b7d52040989b4d
+SpanId: bc61ed2e340c15ce
+ParentId: 0754a4320f6e2999
+Name: GET
+Duration: 32.3196ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:40.711] TRACE
+TraceId: d5aca0fe520d5c9c09b7d52040989b4d
+SpanId: 0754a4320f6e2999
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30039.6395ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:17:40.743] TRACE
+TraceId: aefc4232041c89cf1d780b2699e66091
+SpanId: ef57bb0b753f764e
+ParentId: 07162b85f8c763a0
+Name: GET
+Duration: 29.0514ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.025] TRACE
+TraceId: 205b6f57c5bab0e0c8a320afe55be49c
+SpanId: 926b3cc0ca7bb01f
+ParentId: 0000000000000000
+Name: market_monitoring.cycle
+Duration: 60091.6978ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.079] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: 1675bc44d2d7dd8b
+ParentId: c5c82c8ebfe6f86f
+Name: GET
+Duration: 53.6856ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.092] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: aad153d283e41308
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 1.151ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.092] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.096] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: de82ddb1bd89b543
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 0.9242ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.096] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.101] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: 79549a8bc104f653
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 1.0388ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.101] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.108] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: ee51872941a25229
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 1.198ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.108] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.113] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: aa14ed6afabe0578
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 1.1891ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.113] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.118] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: 39b57146d9882ae5
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 1.2108ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.118] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.122] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: d8cb9d41fe6dbfcb
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 0.8991ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.122] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.127] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: 9fc3d1fcb472f53f
+ParentId: c6349727ee49e56d
+Name: SELECT [Symbols]
+Duration: 1.2329ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:18:05.127] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:05.130] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: c6349727ee49e56d
+ParentId: c5c82c8ebfe6f86f
+Name: market_data.fetch
+Duration: 50.1043ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:06.290] TRACE
+TraceId: 47edf0243937db44dbe829e3098006de
+SpanId: a7bfadf99cf644ae
+ParentId: 0000000000000000
+Name: strategy_execution.cycle
+Duration: 60027.9622ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:06.323] TRACE
+TraceId: 2bc171b115671429baf8004d96e6846b
+SpanId: efd4ce8e82a3b824
+ParentId: ab414e4738d47f51
+Name: GET
+Duration: 30.6603ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:06.329] TRACE
+TraceId: 2bc171b115671429baf8004d96e6846b
+SpanId: a0330dca022cad16
+ParentId: ab414e4738d47f51
+Name: strategy.evaluate
+Duration: 4.2266ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:10.744] TRACE
+TraceId: aefc4232041c89cf1d780b2699e66091
+SpanId: 07162b85f8c763a0
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30030.7917ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:10.780] TRACE
+TraceId: ec0ac0fb59ab89f2bacbd97af5597a5e
+SpanId: 4ff12662525c512f
+ParentId: c08174df82117dd0
+Name: GET
+Duration: 34.08ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:40.786] TRACE
+TraceId: ec0ac0fb59ab89f2bacbd97af5597a5e
+SpanId: c08174df82117dd0
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30040.8991ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:18:40.813] TRACE
+TraceId: 0c8f9073df60219d3267f92e22045b8c
+SpanId: 66283dd09d54679d
+ParentId: 034f251de148109d
+Name: GET
+Duration: 26.6961ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.133] TRACE
+TraceId: c76cb7b6a67bcb414e1357e204eaffc2
+SpanId: c5c82c8ebfe6f86f
+ParentId: 0000000000000000
+Name: market_monitoring.cycle
+Duration: 60107.6376ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.191] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: a6786e8eca4ca420
+ParentId: cab969cd13d25f8a
+Name: GET
+Duration: 57.0654ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.195] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: b93c397ac0066c28
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 1.5131ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.195] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.201] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: fe025c07db4457e2
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 1.1732ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.201] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.207] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: 384494ebcff5c3f7
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 0.9521ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.207] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.211] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: a67f74b771546563
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 0.6873ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.211] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.214] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: 861d1ec4de1cdfc0
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 0.7143ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.214] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.218] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: 6451dde1b5a8854e
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 0.6478ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.218] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.221] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: 9728eb299075d137
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 0.6904ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.221] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.225] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: c003abf25cd29c3b
+ParentId: 8b97e85d8960751a
+Name: SELECT [Symbols]
+Duration: 0.6768ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:19:05.225] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:05.227] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: 8b97e85d8960751a
+ParentId: cab969cd13d25f8a
+Name: market_data.fetch
+Duration: 35.4493ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:06.341] TRACE
+TraceId: 2bc171b115671429baf8004d96e6846b
+SpanId: ab414e4738d47f51
+ParentId: 0000000000000000
+Name: strategy_execution.cycle
+Duration: 60049.7797ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:06.371] TRACE
+TraceId: 8395d5d5efa467c2cb1cfd4ebc5b6fe9
+SpanId: 2db64658fec246c6
+ParentId: 597d0e0ca0b9f2f1
+Name: GET
+Duration: 29.2596ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:06.373] TRACE
+TraceId: 8395d5d5efa467c2cb1cfd4ebc5b6fe9
+SpanId: 6d1a6881d97c2486
+ParentId: 597d0e0ca0b9f2f1
+Name: strategy.evaluate
+Duration: 0.628ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:10.817] TRACE
+TraceId: 0c8f9073df60219d3267f92e22045b8c
+SpanId: 034f251de148109d
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30030.8626ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:10.849] TRACE
+TraceId: 2226c3d2186c4bc694ad60aba98b615e
+SpanId: c4cc7f98095b6042
+ParentId: a6b3d44c9da3db19
+Name: GET
+Duration: 29.7833ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:40.852] TRACE
+TraceId: 2226c3d2186c4bc694ad60aba98b615e
+SpanId: a6b3d44c9da3db19
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30033.9191ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:19:40.898] TRACE
+TraceId: 96ea1f1f1373af55145083220b54fa8f
+SpanId: 49400b1eac66e856
+ParentId: 5ee5cc5359717585
+Name: GET
+Duration: 44.3892ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.234] TRACE
+TraceId: 2782ab70fb7b19998229e7d6affc764a
+SpanId: cab969cd13d25f8a
+ParentId: 0000000000000000
+Name: market_monitoring.cycle
+Duration: 60100.9449ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.264] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: d9ec78357616b2c5
+ParentId: c6e0a89571b7cd3d
+Name: GET
+Duration: 28.9097ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.272] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: 05789291d355c4c1
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 2.9194ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.272] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.281] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: fbea9b5321eaee16
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 1.6811ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.281] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.288] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: ba96db3d416b775b
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 1.3446ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.288] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.299] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: bc393d7df32aa790
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 0.9685ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.299] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.303] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: 9036d18adffbbea3
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 0.8147ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.303] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.305] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: d5c1a73428ed61da
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 0.6385ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.305] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.308] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: a3df437a5b16b447
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 0.5712ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.308] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.311] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: 7bfac916012e404b
+ParentId: b323464bf04ffd24
+Name: SELECT [Symbols]
+Duration: 0.928ms
+Status: Error
+Tags:
+  db.system.name = microsoft.sql_server
+  db.namespace = MSSQLLocalDB.Merlin
+  server.address = (localdb)
+  db.query.text = SELECT TOP(?) [s].[Id], [s].[CreatedAt], [s].[Exchange], [s].[IsActive], [s].[Name], [s].[Ticker], [s].[UpdatedAt]
+FROM [Symbols] AS [s]
+WHERE [s].[Ticker] = @symbolTicker
+  db.query.summary = SELECT [Symbols]
+  error.type = Microsoft.Data.SqlClient.SqlException
+  db.response.status_code = 208
+Events:
+  [20:20:05.311] exception
+    exception.message = Invalid object name 'Symbols'.
+    exception.stacktrace = Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'Symbols'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at Microsoft.Data.SqlClient.SqlDataReader.get_MetaData()
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteReader(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteReaderAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteReaderAsync>b__201_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+ClientConnectionId:c8b05a11-a8a1-4a7e-8f75-c955815a6df9
+Error Number:208,State:1,Class:16
+    exception.type = Microsoft.Data.SqlClient.SqlException
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:05.314] TRACE
+TraceId: 866059526f553fe774e8a05867df4f4e
+SpanId: b323464bf04ffd24
+ParentId: c6e0a89571b7cd3d
+Name: market_data.fetch
+Duration: 48.3787ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:06.373] TRACE
+TraceId: 8395d5d5efa467c2cb1cfd4ebc5b6fe9
+SpanId: 597d0e0ca0b9f2f1
+ParentId: 0000000000000000
+Name: strategy_execution.cycle
+Duration: 60031.366ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:06.401] TRACE
+TraceId: 87edd72a470683077693e50981d94815
+SpanId: 35fdd2f1103a0bc7
+ParentId: 6bdce85e077b7a9f
+Name: GET
+Duration: 27.9752ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/account
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:06.402] TRACE
+TraceId: 87edd72a470683077693e50981d94815
+SpanId: 7b690383a8eb5a63
+ParentId: 6bdce85e077b7a9f
+Name: strategy.evaluate
+Duration: 0.1703ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:10.895] TRACE
+TraceId: 96ea1f1f1373af55145083220b54fa8f
+SpanId: 5ee5cc5359717585
+ParentId: 0000000000000000
+Name: position_monitoring.cycle
+Duration: 30041.6818ms
+Status: Unset
+--------------------------------------------------------------------------------
+[2026-01-30 20:20:10.924] TRACE
+TraceId: 50396f21102eeda0eeb398a5b66fa7a7
+SpanId: 7e6323d9b1779c6a
+ParentId: e717b087a0e907e4
+Name: GET
+Duration: 27.7575ms
+Status: Unset
+Tags:
+  http.request.method = GET
+  server.address = paper-api.alpaca.markets
+  url.full = https://paper-api.alpaca.markets/v2/positions
+  network.protocol.version = 1.1
+--------------------------------------------------------------------------------
