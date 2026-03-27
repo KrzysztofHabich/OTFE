@@ -24,4 +24,8 @@
     <ProjectReference Include="..\..\OTFE\OTFE.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Samples\" />
+  </ItemGroup>
+
 </Project>
